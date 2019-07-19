@@ -13,28 +13,27 @@ public class Main implements RequestHandler<ApiGatewayRequest, ApiGatewayRespons
     public ApiGatewayResponse handleRequest(ApiGatewayRequest request, Context context) {
 
         LambdaLogger logger = context.getLogger();
+        Map<String, String> headers = new HashMap<String, String>();
         logger.log("Starting...");
 
         //Function Logic
         String response;
-        if (request.getHeaders().get("Content-Type") == "application/json") {
+        if (request.getHeaders().get("Content-Type").compareTo("application/json") == 0) {
             // If you want to parse a JSON request to class (POJO)
             Gson g = new Gson();
             RequestClass requestObj = g.fromJson(request.getBody(), RequestClass.class);
-            //response = "{\"message\": \"" + new StringBuilder(requestObj.getParameter()).reverse().toString() + "\"}";
-            response = new StringBuilder(requestObj.getParameter()).reverse().toString();
+            response = "{\"parameter\": \"" + new StringBuilder(requestObj.getParameter()).reverse().toString() + "\"}";
+            logger.log(response);
+            logger.log(requestObj.getParameter());
+            headers.put("Content-Type", "application/json");
         } else {
-            //response = "{\"message\": \"" + new StringBuilder(request.getBody()).reverse().toString() + "\"}";
             response = new StringBuilder(request.getBody()).reverse().toString();
+            headers.put("Content-Type", "text/plain");
         }
 
         //logger.log(this.convertWithIteration(request.getHeaders()));
 
         logger.log("Done!");
-
-        Map<String,String> headers = new HashMap<String,String>();
-        headers.put("Content-Type","text/plain");
-        //headers.put("Content-Type", "application/json");
 
         //logger.log(this.convertWithIteration(headers));
 
