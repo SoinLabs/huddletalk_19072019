@@ -20,8 +20,9 @@ public class Main implements RequestHandler<ApiGatewayRequest, ApiGatewayRespons
         EmailRequest emailRequest = g.fromJson(request.getBody(), EmailRequest.class);
 
         LambdaLogger logger = context.getLogger();
-        logger.log("received : " + emailRequest.getMessage());
-        logger.log("received : " + emailRequest.getToEmail());
+        logger.log("Subject : " + emailRequest.getSubject());
+        logger.log("Message : " + emailRequest.getMessage());
+        logger.log("To Email : " + emailRequest.getToEmail());
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -51,14 +52,13 @@ public class Main implements RequestHandler<ApiGatewayRequest, ApiGatewayRespons
 
             Transport.send(message);
 
-            System.out.println("Done");
+            logger.log("Email Sent!!!");
 
         } catch (MessagingException e) {
             e.printStackTrace();
+            logger.log(e.getLocalizedMessage());
         }
 
-        //LambdaLogger logger = context.getLogger();
-        logger.log("received : " + request);
         return new ApiGatewayResponse(200, request.getHeaders(), request.getBody());
     }
 }

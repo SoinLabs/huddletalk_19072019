@@ -2,6 +2,7 @@
 send_email_golang/.env
 send_email_java/.env
 send_email_node/.env
+node_boilerplate/.env
 
 # Compiled Code
 send_email_golang/main
@@ -11,6 +12,10 @@ send_email_java/target
 send_email_java/.classpath
 send_email_java/.project
 send_email_java/.settings
+java_boilerplate/target
+java_boilerplate/.classpath
+java_boilerplate/.project
+java_boilerplate/.settings
 
 # Zip files
 send_email_node/send_email_node.zip
