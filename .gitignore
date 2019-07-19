@@ -1,22 +1,12 @@
-# ENV Variables
-send_email_golang/.env
-send_email_java/.env
-send_email_node/.env
-node_boilerplate/.env
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
 
-# Compiled Code
-send_email_golang/main
-send_email_node/node_modules
-send_email_node/package-lock.json
-send_email_java/target
-send_email_java/.classpath
-send_email_java/.project
-send_email_java/.settings
-java_boilerplate/target
-java_boilerplate/.classpath
-java_boilerplate/.project
-java_boilerplate/.settings
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
 
-# Zip files
-send_email_node/send_email_node.zip
-send_email_golang/send_email_golang.zip
