@@ -40,7 +40,7 @@ Returns gmkm0kq5l4
 ```
 aws apigateway create-resource --rest-api-id bzrus7wvl9 \
       --parent-id gmkm0kq5l4 \
-      --path-part {proxy+}
+      --path-part /$FUNCTION_NAME
 ```
 Returns daqkhm
 

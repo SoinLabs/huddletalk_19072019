@@ -28,7 +28,7 @@ public class Main implements RequestHandler<ApiGatewayRequest, ApiGatewayRespons
             response = new StringBuilder(request.getBody()).reverse().toString();
         }
 
-        logger.log(this.convertWithIteration(request.getHeaders()));
+        //logger.log(this.convertWithIteration(request.getHeaders()));
 
         logger.log("Done!");
 
@@ -36,7 +36,7 @@ public class Main implements RequestHandler<ApiGatewayRequest, ApiGatewayRespons
         headers.put("Content-Type","text/plain");
         //headers.put("Content-Type", "application/json");
 
-        logger.log(this.convertWithIteration(headers));
+        //logger.log(this.convertWithIteration(headers));
 
         return new ApiGatewayResponse(200, headers, response);
     }
